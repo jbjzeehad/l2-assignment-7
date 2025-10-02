@@ -15,4 +15,25 @@ datasource db {
 
 model User {
   id Int @id @default(autoincrement())
+  email String @unique
+  password String
+  name String
+  role String @default("ADMIN")
+  phone String
+  picture String?
+  status UserStatus @default(ACTIVE)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
+
+enum Role {
+  ADMIN
+  USER
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  BLOCK
+}
+
